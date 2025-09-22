@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <!-- Nombre de la unidad de persistencia (debe coincidir con tu código) -->
+    <persistence-unit name="tapas" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <!-- Detecta automáticamente todas tus clases con @Entity -->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
+            <!-- Conexión a Firebird -->
+            <property name="javax.persistence.jdbc.driver" value="org.firebirdsql.jdbc.FBDriver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:firebirdsql:localhost/3050:/var/lib/firebird/3.0/data/Actividad_3.fdb"/>
+            <property name="javax.persistence.jdbc.user" value="sysdba"/>
+            <property name="javax.persistence.jdbc.password" value="masterkey"/>
+
+            <!-- Charset recomendado -->
+            <property name="lc_ctype" value="UTF8"/>
+
+            <!-- Configuración de EclipseLink -->
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.ddl-generation" value="none"/>
+            <property name="eclipselink.target-database"
+                      value="org.eclipse.persistence.platform.database.FirebirdPlatform"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
